@@ -3,18 +3,23 @@ import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 
-const StudentTableRow = ({ student }) => {
-  const { name, email, rollno } = student;
+const StudentTableRow = ({ student, deleteStudent }) => {
+  const { name, email, rollno, _id } = student;
+
   return (
     <tr>
       <td>{name}</td>
       <td>{email}</td>
       <td>{rollno}</td>
       <td>
-        <Link className="edit-link" to={`/edit-student/${student._id}`}>
+        <Link className="edit-link" to={`/edit-student/${_id}`}>
           Edit
         </Link>
-        <Button size="sm" variant="danger">
+        <Button
+          onClick={() => deleteStudent(student._id)}
+          size="sm"
+          variant="danger"
+        >
           Delete
         </Button>
       </td>

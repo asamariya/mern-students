@@ -16,6 +16,15 @@ const StudentList = () => {
       .catch(err => console.log(err));
   }, []);
 
+  const deleteStudent = id => {
+    axios
+      .delete(`http://localhost:4000/students/delete-student/${id}`)
+      .then(res => console.log(`Student with id: ${id} successfully deleted.`))
+      .catch(err => console.log(err));
+
+    setStudents(students.filter(student => student._id !== id));
+  };
+
   return (
     <div className="table-wrapper">
       <Table striped bordered hover>
@@ -30,7 +39,11 @@ const StudentList = () => {
         <tbody>
           {students.length > 0 &&
             students.map((student, i) => (
-              <StudentTableRow student={student} key={i} />
+              <StudentTableRow
+                student={student}
+                key={i}
+                deleteStudent={deleteStudent}
+              />
             ))}
         </tbody>
       </Table>
