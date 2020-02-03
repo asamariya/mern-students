@@ -11,7 +11,7 @@ router.route('/create-student').post((req, res, next) => {
     } else {
       console.log('data', data);
       res.json(data);
-      console.log('Student updated successfully!');
+      console.log('Student created successfully!');
     }
   });
 });
