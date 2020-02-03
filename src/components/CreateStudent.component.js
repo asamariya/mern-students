@@ -14,10 +14,10 @@ const CreateStudent = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log('Student successfully created!');
-    console.log(`Name: ${name}`);
-    console.log(`Email: ${email}`);
-    console.log(`Rollno: ${rollno}`);
+    // console.log('Student successfully created!');
+    // console.log(`Name: ${name}`);
+    // console.log(`Email: ${email}`);
+    // console.log(`Rollno: ${rollno}`);
 
     const studentObject = {
       name,
@@ -27,7 +27,7 @@ const CreateStudent = () => {
 
     axios
       .post('http://localhost:4000/students/create-student', studentObject)
-      .then(res => console.log(res.data));
+      .then(res => res.data);
 
     setName('');
     setEmail('');
@@ -52,7 +52,7 @@ const CreateStudent = () => {
           <Form.Control type="email" value={email} onChange={onChangeEmail} />
         </Form.Group>
 
-        <Form.Group controlId="Name">
+        <Form.Group controlId="Rollno">
           <Form.Label>Roll No</Form.Label>
           <Form.Control type="text" value={rollno} onChange={onChangeRollno} />
         </Form.Group>

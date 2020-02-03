@@ -35,7 +35,7 @@ const EditStudent = props => {
     axios
       .put(`http://localhost:4000/students/update-student/${id}`, studentObject)
       .then(res => {
-        console.log('Student successfully updated');
+        // console.log('Student successfully updated');
       })
       .catch(err => console.log(err));
 
@@ -60,7 +60,7 @@ const EditStudent = props => {
           <Form.Control type="email" value={email} onChange={onChangeEmail} />
         </Form.Group>
 
-        <Form.Group controlId="Name">
+        <Form.Group controlId="Rollno">
           <Form.Label>Roll No</Form.Label>
           <Form.Control type="text" value={rollno} onChange={onChangeRollno} />
         </Form.Group>

@@ -11,6 +11,7 @@ import Header from './components/Header';
 import StudentList from './components/StudentList.component';
 import CreateStudent from './components/CreateStudent.component';
 import EditStudent from './components/EditStudent.component';
+import StudentShow from './components/StudentShow.component';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
                   <Route path="/create-student" component={CreateStudent} />
                   <Route path="/edit-student/:id" component={EditStudent} />
                   <Route path="/student-list" component={StudentList} />
+                  <Route path="/students/:id" component={StudentShow} />
                 </Switch>
               </div>
             </Col>

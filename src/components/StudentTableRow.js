@@ -8,11 +8,14 @@ const StudentTableRow = ({ student, deleteStudent }) => {
 
   return (
     <tr>
-      <td>{name}</td>
-      <td>{email}</td>
-      <td>{rollno}</td>
-      <td>
-        <Link className="edit-link" to={`/edit-student/${_id}`}>
+      <td className="align-middle">{name}</td>
+      <td className="align-middle">{email}</td>
+      <td className="align-middle">{rollno}</td>
+      <td className="d-flex flex-column">
+        <Link to={`/students/${_id}`} className="mb-2">
+          View Details
+        </Link>
+        <Link className="edit-link mb-2" to={`/edit-student/${_id}`}>
           Edit
         </Link>
         <Button
