@@ -57,6 +57,7 @@ router.route('/update-student/:id').put((req, res, next) => {
     {
       $set: req.body
     },
+    { runValidators: true },
     (error, data) => {
       if (error) {
         return next(error);

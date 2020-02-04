@@ -8,6 +8,7 @@ const EditStudent = props => {
   const [email, setEmail] = useState('');
   const [rollno, setRollno] = useState('');
   const [toggleState, setToggleState] = useState(false);
+  const [error, setError] = useState(false);
 
   const onChangeStudentname = e => setName(e.target.value);
   const onChangeEmail = e => setEmail(e.target.value);
@@ -30,14 +31,19 @@ const EditStudent = props => {
 
   const onSubmit = e => {
     e.preventDefault();
+    setError(false);
     const studentObject = { name, email, rollno };
 
     axios
       .put(`http://localhost:4000/students/update-student/${id}`, studentObject)
       .then(res => {
         // console.log('Student successfully updated');
+        return res;
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        setError(true);
+      });
 
     setToggleState(!toggleState);
     props.history.push('/student-list');
@@ -46,6 +52,11 @@ const EditStudent = props => {
   return (
     <div className="form-wrapper mt-3">
       <h1 className="mb-3">Edit student</h1>
+      {error && (
+        <p style={{ color: 'red' }}>
+          Sorry, student not updated. Please enter all fields correctly!
+        </p>
+      )}
       <CreateEditForm
         onSubmit={onSubmit}
         name={name}
