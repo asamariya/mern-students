@@ -20,7 +20,7 @@ const App = () => {
         <Header />
         <Container>
           <Row>
-            <Col md={12}>
+            <Col md={12} style={{ padding: 0 }}>
               <div className="wrapper">
                 <Switch>
                   <Route exact path="/" component={CreateStudent} />

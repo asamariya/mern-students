@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import CreateEditForm from './shared/__CreateEditForm';
 
 const EditStudent = props => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [rollno, setRollno] = useState('');
+  const [toggleState, setToggleState] = useState(false);
 
   const onChangeStudentname = e => setName(e.target.value);
   const onChangeEmail = e => setEmail(e.target.value);
@@ -39,36 +39,23 @@ const EditStudent = props => {
       })
       .catch(err => console.log(err));
 
+    setToggleState(!toggleState);
     props.history.push('/student-list');
   };
 
   return (
     <div className="form-wrapper mt-3">
-      <h1 className="mb-3">Create a new student</h1>
-      <Form onSubmit={onSubmit}>
-        <Form.Group controlId="Name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            value={name}
-            onChange={onChangeStudentname}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="Email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" value={email} onChange={onChangeEmail} />
-        </Form.Group>
-
-        <Form.Group controlId="Rollno">
-          <Form.Label>Roll No</Form.Label>
-          <Form.Control type="text" value={rollno} onChange={onChangeRollno} />
-        </Form.Group>
-
-        <Button variant="danger" size="lg" block="block" type="submit">
-          Update Student
-        </Button>
-      </Form>
+      <h1 className="mb-3">Edit student</h1>
+      <CreateEditForm
+        onSubmit={onSubmit}
+        name={name}
+        email={email}
+        rollno={rollno}
+        onChangeStudentname={onChangeStudentname}
+        onChangeEmail={onChangeEmail}
+        onChangeRollno={onChangeRollno}
+        btnText={'Update Student'}
+      />
     </div>
   );
 };

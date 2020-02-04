@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+
 import axios from 'axios';
+
+import CreateEditForm from './shared/__CreateEditForm'
 
 const CreateStudent = () => {
   const [name, setName] = useState('');
@@ -37,30 +38,8 @@ const CreateStudent = () => {
   return (
     <div className="form-wrapper mt-3">
       <h1 className="mb-3">Create a new student</h1>
-      <Form onSubmit={onSubmit}>
-        <Form.Group controlId="Name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            value={name}
-            onChange={onChangeStudentname}
-          />
-        </Form.Group>
+      <CreateEditForm onSubmit={onSubmit} name={name} email={email} rollno={rollno} onChangeStudentname={onChangeStudentname} onChangeEmail={onChangeEmail} onChangeRollno={onChangeRollno} btnText={'Create Student'}/>
 
-        <Form.Group controlId="Email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" value={email} onChange={onChangeEmail} />
-        </Form.Group>
-
-        <Form.Group controlId="Rollno">
-          <Form.Label>Roll No</Form.Label>
-          <Form.Control type="text" value={rollno} onChange={onChangeRollno} />
-        </Form.Group>
-
-        <Button variant="danger" size="lg" block="block" type="submit">
-          Create Student
-        </Button>
-      </Form>
     </div>
   );
 };
